@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../includes/head.ejs')%>
+
+    <body>
+        <%- include('../includes/header.ejs')%>
+            <!-- Hero Area Start-->
+            <div class="slider-area">
+                <div class="single-slider slider-height2 d-flex align-items-center">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="hero-cap text-center">
+                                    <h2>Watch Create</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            </br>
+            </br>
+            <!-- Hero Area End-->
+            <!--================Single Product Area =================-->
+            <div class="container">
+                <form action="/create" method="POST" enctype="multipart/form-data">
+                <div class="row">
+                        <div class="col-md-12">
+                            <h4>Name :</h4>
+                            <input class="form-control" type="text" name="product_name" value="">
+                        </div>
+
+
+                        <div class="col-md-12">
+                            <h4>Categories :</h4>
+                            <input class="form-control" type="text" name="ProductType" value="">
+                        </div>
+
+                        <div class="col-md-6">
+                            <h4>Quantity :</h4>
+                            <input class="form-control" type="text" name="balance" value="">
+                        </div>
+                        <div class="col-md-6">
+                            <h4>Price :</h4>
+                            <input class="form-control" type="text" name="price" value="">
+                        </div>
+
+                        <div class="col-md-12">
+                            <h4>Description :</h4>
+                            <input class="form-control" type="text" name="Detail" value="">
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="field col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <h4>Imagr</h4>
+                                <input type="file" name="image" id="img" />
+                                <div style="width: 200px; height: 200px; ">
+                                    <img src="#" class="form-img" id="imgPreview" alt=""" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <button type=" submit" class="btn">save</button>
+
+                </div>
+            </form>
+
+            </div>
+
+
+            <!--================End Single Product Area =================-->
+            </main>
+            <%- include('../includes/footer.ejs')%>
+                <!--? Search model Begin -->
+                <div class="search-model-box">
+                    <div class="h-100 d-flex align-items-center justify-content-center">
+                        <div class="search-close-btn">+</div>
+                        <form class="search-model-form">
+                            <input type="text" id="search-input" placeholder="Searching key....." />
+                        </form>
+                    </div>
+                </div>
+                <!-- Search model end -->
+
+                <!-- JS here -->
+
+                <%- include('../includes/JS_here.ejs') %>
+
+                    <!-- swiper js -->
+                    <script src="/assets/js/swiper.min.js"></script>
+                    <!-- swiper js -->
+                    <script src="/assets/js/mixitup.min.js"></script>
+                    <script src="/assets/js/jquery.counterup.min.js"></script>
+                    <script src="/assets/js/waypoints.min.js"></script>
+                    <script>
+                        function readURL(input) {
+                          console.log("file :", input.files);
+                          if (input.files && input.files[0]) {
+                            var reader = new FileReader();
+                            reader.onload = function (e) {
+                              console.log("e :", e);
+                              $("#imgPreview").attr("src", e.target.result);
+                            };
+                            reader.readAsDataURL(input.files[0]);
+                          }
+                        }
+                        $("#img").change(function () {
+                          readURL(this);
+                        });
+                      </script>
+    </body>
+
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zxx">
+  <%- include('../includes/head.ejs') %>
+
+  <body>
+    <%- include('../includes/header.ejs')%>
+      <!-- Hero Area Start-->
+      <div class="slider-area">
+        <div class="single-slider slider-height2 d-flex align-items-center">
+          <div class="container">
+            <div class="row">
+              <div class="col-xl-12">
+                <div class="hero-cap text-center">
+                  <h2>Watch cart</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </br>
+    </br>
+      <!-- Hero Area End-->
+      <!--================Single Product Area =================-->
+      <div class="section padding_layout_1 Shopping_cart_section">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12 col-md-12">
+              <div class="product-table">
+                <% let total = 0; let cartTotal = 0; %>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Product</th>
+                      <th>Quantity</th>
+                      <th class="text-center">Price</th>
+                      <th class="text-center">Total</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% if (prods.length > 0) { %> <%
+                    prods.map((product, index) => { %>
+                    <tr>
+                      <td class="col-sm-8 col-md-6">
+                        <div class="media">
+                          <a class="thumbnail pull-left" href="#">
+                            <img
+                              class="media-object"
+                              src="<%- prods.path%>" alt="" 
+                          /></a>
+                          <div class="media-body">
+                            <h4 class="media-heading">
+                              <a href="#" style="color: black;"><%- product.product_name %></a>
+                            </h4>
+                          </div>
+                        </div>
+                      </td>
+                      <td class="col-sm-1 col-md-1" style="text-align: center">
+                        <div class="col-md-12">
+                          <p class="price_table"><%- product.balance %></p>
+                        </div>
+                      </td>
+                      <td class="col-sm-1 col-md-1 text-center">
+                        <p class="price_table">$<%- product.price %>.00</p>
+                        <% cartTotal = parseInt(product.price)*parseInt(product.balance) %>
+                      </td>
+                      <td class="col-sm-1 col-md-1 text-center">
+                        <p class="price_table">$<%= cartTotal %></p>
+                        <% total = total+cartTotal %>
+                      </td>
+                      <td class="col-sm-1 col-md-1">
+                        <a
+                          type="button"
+                          href="/deleteProductCart/<%- product.product_name %>"
+                          class="bt_main"
+                        >
+                          <i class="fa fa-trash"></i> Remove
+                        </a>
+                      </td>
+                    </tr>
+                    <% }) %> <% } else { %>
+                    <tr>
+                      <td colspan="5">
+                        <h1>No Products Found!</h1>
+                      </td>
+                    </tr>
+                    <% } %>
+                  </tbody>
+                </table>
+              </div>
+              <% if (prods.length > 0) { %>
+              </br>
+            </br>
+
+
+              <div class="shopping-cart-cart">
+                <table>
+                  <tbody>
+                    <tr class="head-table">
+                      <td><h5>Cart Totals</h5></td>
+                      <td class="text-right"></td>
+                    </tr>
+                    <tr>
+                      <td><h4>Subtotal</h4></td>
+                      <td class="text-right"><h4>$<%= total %>.00</h4></td>
+                    </tr>
+                    <tr>
+                      <td><h5>Estimated shipping</h5></td>
+                      <td class="text-right"><h4>$5.00</h4></td>
+                      <% total = total+5 %>
+                    </tr>
+                    <tr>
+                      <td><h3>Total</h3></td>
+                      <td class="text-right"><h4>$<%= total %>.00</h4></td>
+                    </tr>
+                   
+                  </br>
+                      <td>
+                        <button type="button" class="button">
+                          Continue Shopping
+                        </button>
+                      </td>
+                     
+                  </tbody>
+                </table>
+              </div>
+              <%}%>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--================End Single Product Area =================-->
+    </main>
+    <footer>
+      <!-- Footer Start-->
+      <div class="footer-area footer-padding">
+        <div class="container">
+          <div class="row d-flex justify-content-between">
+            <div class="col-xl-3 col-lg-3 col-md-5 col-sm-6">
+              <div class="single-footer-caption mb-50">
+                <div class="single-footer-caption mb-30">
+                  <!-- logo -->
+                  <div class="footer-logo">
+                    <a href="index.html"
+                      ><img src="/assets/img/logo/logo2_footer.png" alt=""
+                    /></a>
+                  </div>
+                  <div class="footer-tittle">
+                    <div class="footer-pera">
+                      <p>
+                        Asorem ipsum adipolor sdit amet, consectetur adipisicing
+                        elitcf sed do eiusmod tem.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-2 col-lg-3 col-md-3 col-sm-5">
+              <div class="single-footer-caption mb-50">
+                <div class="footer-tittle">
+                  <h4>Quick Links</h4>
+                  <ul>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#"> Offers & Discounts</a></li>
+                    <li><a href="#"> Get Coupon</a></li>
+                    <li><a href="#"> Contact Us</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-7">
+              <div class="single-footer-caption mb-50">
+                <div class="footer-tittle">
+                  <h4>New Products</h4>
+                  <ul>
+                    <li><a href="#">Woman Cloth</a></li>
+                    <li><a href="#">Fashion Accessories</a></li>
+                    <li><a href="#"> Man Accessories</a></li>
+                    <li><a href="#"> Rubber made Toys</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-5 col-sm-7">
+              <div class="single-footer-caption mb-50">
+                <div class="footer-tittle">
+                  <h4>Support</h4>
+                  <ul>
+                    <li><a href="#">Frequently Asked Questions</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Report a Payment Issue</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Footer bottom -->
+          <div class="row align-items-center">
+            <div class="col-xl-7 col-lg-8 col-md-7">
+              <div class="footer-copy-right">
+                <p>
+                  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                  Copyright &copy;
+                  <script>
+                    document.write(new Date().getFullYear());
+                  </script>
+                  All rights reserved | This template is made with
+                  <i class="fa fa-heart" aria-hidden="true"></i> by
+                  <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                </p>
+              </div>
+            </div>
+            <div class="col-xl-5 col-lg-4 col-md-5">
+              <div class="footer-copy-right f-right">
+                <!-- social -->
+                <div class="footer-social">
+                  <a href="#"><i class="fab fa-twitter"></i></a>
+                  <a href="https://www.facebook.com/sai4ull"
+                    ><i class="fab fa-facebook-f"></i
+                  ></a>
+                  <a href="#"><i class="fab fa-behance"></i></a>
+                  <a href="#"><i class="fas fa-globe"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Footer End-->
+    </footer>
+    <!--? Search model Begin -->
+    <div class="search-model-box">
+      <div class="h-100 d-flex align-items-center justify-content-center">
+        <div class="search-close-btn">+</div>
+        <form class="search-model-form">
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Searching key....."
+          />
+        </form>
+      </div>
+    </div>
+    <!-- Search model end -->
+
+    <!-- JS here -->
+
+    <%- include('../includes/JS_here.ejs') %>
+
+    <!-- swiper js -->
+    <script src="/assets/js/swiper.min.js"></script>
+    <!-- swiper js -->
+    <script src="/assets/js/mixitup.min.js"></script>
+    <script src="/assets/js/jquery.counterup.min.js"></script>
+    <script src="/assets/js/waypoints.min.js"></script>
+  </body>
+</html>

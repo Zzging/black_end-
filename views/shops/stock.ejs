@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../includes/head.ejs')%>
+    <body>
+        <%- include('../includes/header.ejs')%>
+          <!-- Hero Area Start-->
+          <div class="slider-area">
+            <div class="single-slider slider-height2 d-flex align-items-center">
+              <div class="container">
+                <div class="row">
+                  <div class="col-xl-12">
+                    <div class="hero-cap text-center">
+                      <h2>Watch Stock</h2>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    
+        </br>
+        </br>
+          <!-- Hero Area End-->
+          <!--================Single Product Area =================-->
+          <div class="section padding_layout_1 Shopping_cart_section">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-12">
+            <div class="product-table">
+              <div class="col-md-12">
+                <a class="btn main_bt btn_create" href="/create"> Create </a>
+              </div>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th class="text-center">Price</th>
+                    <th class="text-center">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% if (products.length > 0) { %> <% products.map((product,
+                  index) => { %>
+                  <tr>
+                    <td class="col-md-6">
+                      <div class="media">
+                        <a
+                          class="thumbnail pull-left"
+                          href="<%- '/productDetail/'+product._id%>"
+                        >
+                          <img
+                            class="media-object"
+                            style="width: 200px;height: 200px"
+                            src="<%- product.path%>"
+                  
+                            alt=""
+                        /></a>
+                        <div class="media-body">
+                          <h4 class="media-heading">
+                            <a href="<%- '/productDetail/'+product._id%>" style="color: black;"
+                              ><%= product.product_name%></a
+                            >
+                          </h4>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="col-md-2" style="text-align: center">
+                      <p class="price_table"><%= product.balance%></p>
+                    </td>
+                    <td class="col-sm-2 col-md-2 text-center">
+                      <p class="price_table"><%= product.price%></p>
+                    </td>
+                    <td class="col-md-2">
+                      <div class="col-md-12" style="display: flex">
+                          <a type="button" href="/edit/<%- product._id%>" class="btn purple-gradient">edit</a>
+                          <a type="button" href="/delete/<%- product._id%>" class="btn purple-gradient">delete</a>
+                      </div>
+                    </td>
+                  </tr>
+                  <% }) %> <% } else { %>
+                  <tr>
+                    <td colspan="4">
+                      <h1>No Products Found!</h1>
+                    </td>
+                  </tr>
+                  <% } %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+          <!--================End Single Product Area =================-->
+        </main>
+        <%- include('../includes/footer.ejs')%>
+        <!--? Search model Begin -->
+        <div class="search-model-box">
+          <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-btn">+</div>
+            <form class="search-model-form">
+              <input
+                type="text"
+                id="search-input"
+                placeholder="Searching key....."
+              />
+            </form>
+          </div>
+        </div>
+        <!-- Search model end -->
+    
+        <!-- JS here -->
+    
+        <%- include('../includes/JS_here.ejs') %>
+    
+        <!-- swiper js -->
+        <script src="/assets/js/swiper.min.js"></script>
+        <!-- swiper js -->
+        <script src="/assets/js/mixitup.min.js"></script>
+        <script src="/assets/js/jquery.counterup.min.js"></script>
+        <script src="/assets/js/waypoints.min.js"></script>
+      </body>
+    </html>
